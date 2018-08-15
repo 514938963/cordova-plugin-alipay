@@ -16,8 +16,8 @@
     NSString* orderString = [command.arguments objectAtIndex:0];
 
     if (!orderString) {
-        [self.commandDelegate sendPluginResult:[CDVPluginResult initWithStatus:CDVCommandStatus_ERROR message:orderString] 
-            callbackId:self.callbackId];
+       CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"支付异常"];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
 
     NSString* appScheme = [NSString stringWithFormat:@"ali%@", self.appId];
